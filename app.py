@@ -2,7 +2,7 @@ import pickle
 import requests
 import streamlit as st
 import pandas as pd
-
+import numpy as np
 # we need to import a new library named as request to fetch api from tmdb.
 
 # creating a variable named as movies_dict and load the movies_dict.pkl file in it in the read binary format.
@@ -12,8 +12,9 @@ import pandas as pd
 movies_dict = pickle.load(open('movies_dict.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
 # loading the similarity variable from vsc using pickle
-similarity = pickle.load(open('similarity.pkl', 'rb'))
-
+similarity1 = pickle.load(open('similarity1.pkl', 'rb'))
+similarity2 = pickle.load(open('similarity2.pkl', 'rb'))
+similarity = np.concatenate([similarity1, similarity2])
 
 # this function helps to give you the name of the 5 recommended movies when we are passing the name of a movie.
 # just copy and paste the same function from vsc and makes some changes like instead of print use append function.
